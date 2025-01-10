@@ -33,7 +33,7 @@ namespace PerforceDiffMargin
 
         protected override void Dispose(bool disposing)
         {
-            ViewModel.Cleanup();
+            ViewModel.IsActive = false;
 
             base.Dispose(disposing);
         }

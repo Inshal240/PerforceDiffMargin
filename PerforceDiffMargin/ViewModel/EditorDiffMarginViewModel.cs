@@ -2,7 +2,7 @@
 
 using System;
 using System.Linq;
-using GalaSoft.MvvmLight.Command;
+using CommunityToolkit.Mvvm.Input;
 using PerforceDiffMargin.Core;
 using PerforceDiffMargin.Perforce;
 

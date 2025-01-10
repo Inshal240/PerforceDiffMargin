@@ -1,13 +1,13 @@
 using System;
 using System.Collections.ObjectModel;
 using System.Linq;
-using GalaSoft.MvvmLight;
+using CommunityToolkit.Mvvm.ComponentModel;
 using PerforceDiffMargin.Core;
 using PerforceDiffMargin.Perforce;
 
 namespace PerforceDiffMargin.ViewModel
 {
-    internal abstract class DiffMarginViewModelBase : ViewModelBase
+    internal abstract class DiffMarginViewModelBase : ObservableRecipient
     {
         protected readonly IMarginCore MarginCore;
 
@@ -37,7 +37,7 @@ namespace PerforceDiffMargin.ViewModel
         {
             foreach (var diffViewModel in DiffViewModels)
             {
-                diffViewModel.Cleanup();
+                diffViewModel.IsActive = false;
             }
             DiffViewModels.Clear();
 
@@ -49,11 +49,11 @@ namespace PerforceDiffMargin.ViewModel
 
         protected abstract DiffViewModel CreateDiffViewModel(HunkRangeInfo hunkRangeInfo);
 
-        public override void Cleanup()
+        protected override void OnDeactivated()
         {
             MarginCore.HunksChanged -= HandleHunksChanged;
 
-            base.Cleanup();
+            base.OnDeactivated();
         }
     }
 }

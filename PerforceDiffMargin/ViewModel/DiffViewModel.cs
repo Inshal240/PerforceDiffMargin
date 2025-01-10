@@ -1,13 +1,13 @@
 using System;
 using System.Windows;
 using System.Windows.Media;
-using GalaSoft.MvvmLight;
+using CommunityToolkit.Mvvm.ComponentModel;
 using PerforceDiffMargin.Core;
 using PerforceDiffMargin.Perforce;
 
 namespace PerforceDiffMargin.ViewModel
 {
-    internal abstract class DiffViewModel : ViewModelBase
+    internal abstract class DiffViewModel : ObservableRecipient
     {
         private double _height;
         private double _top;
@@ -30,8 +30,14 @@ namespace PerforceDiffMargin.ViewModel
             get { return _height; }
             set
             {
+                if ( _height != value )
+                    return;
+
+                var oldValue = _height;
                 _height = value;
-                RaisePropertyChanged(() => Height);
+
+                OnPropertyChanged(nameof(Height));
+                Broadcast(oldValue, _height, nameof(Height));
             }
         }
 
@@ -40,8 +46,14 @@ namespace PerforceDiffMargin.ViewModel
             get { return _top; }
             set
             {
+                if ( _top != value )
+                    return;
+
+                var oldValue = _top;
                 _top = value;
-                RaisePropertyChanged(() => Top);
+
+                OnPropertyChanged(nameof(Top));
+                Broadcast(oldValue, _top, nameof(Top));
             }
         }
 
@@ -82,8 +94,17 @@ namespace PerforceDiffMargin.ViewModel
         public virtual bool IsVisible
         {
             get { return _isVisible; }
-            set { _isVisible = value;
-                RaisePropertyChanged(() => IsVisible);}
+            set
+            {
+                if ( _isVisible != value )
+                    return;
+
+                var oldValue = _isVisible;
+                _isVisible = value;
+
+                OnPropertyChanged(nameof(IsVisible));
+                Broadcast(oldValue, _isVisible, nameof(IsVisible));
+            }
         }
 
         public double ScaleFactor => MarginCore.ScaleFactor;
@@ -106,16 +127,17 @@ namespace PerforceDiffMargin.ViewModel
             return lineNumber >= diffStartLine && lineNumber <= diffEndLine;
         }
 
-        public override void Cleanup()
+        protected override void OnDeactivated()
         {
             MarginCore.BrushesChanged -= HandleBrushesChanged;
 
-            base.Cleanup();
+            base.OnDeactivated();
         }
 
         private void HandleBrushesChanged(object sender, EventArgs e)
         {
-            RaisePropertyChanged(() => DiffBrush);
+            OnPropertyChanged(nameof(DiffBrush));
+            Broadcast(DiffBrush, DiffBrush, nameof(DiffBrush));
         }
 
         protected virtual void UpdateDimensions()

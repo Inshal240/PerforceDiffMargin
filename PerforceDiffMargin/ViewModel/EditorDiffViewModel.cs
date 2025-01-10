@@ -6,7 +6,7 @@ using System.Threading;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
-using GalaSoft.MvvmLight.Command;
+using CommunityToolkit.Mvvm.Input;
 using PerforceDiffMargin.Core;
 using PerforceDiffMargin.Perforce;
 using Microsoft.VisualStudio;
@@ -163,7 +163,10 @@ namespace PerforceDiffMargin.ViewModel
             set
             {
                 if (value == _showPopup) return;
+
+                var oldValue = _showPopup;
                 _showPopup = value;
+
                 if (value)
                 {
                     IVsUIShell4 uiShell = Package.GetGlobalService(typeof(SVsUIShell)) as IVsUIShell4;
@@ -188,8 +191,11 @@ namespace PerforceDiffMargin.ViewModel
                         ErrorHandler.CallWithCOMConvention(() => toolbarTrayHost.Close());
                 }
 
-                RaisePropertyChanged(() => ShowPopup);
-                RaisePropertyChanged(() => ToolBarTray);
+                OnPropertyChanged(nameof(ShowPopup));
+                Broadcast(oldValue, _showPopup, nameof(ShowPopup));
+
+                OnPropertyChanged(nameof(ToolBarTray));
+                Broadcast(ToolBarTray, ToolBarTray, nameof(ToolBarTray));
             }
         }
 
@@ -202,7 +208,8 @@ namespace PerforceDiffMargin.ViewModel
             {
                 if (value == _isDiffTextVisible) return;
                 _isDiffTextVisible = value;
-                RaisePropertyChanged(() => IsDiffTextVisible);
+                OnPropertyChanged(nameof(IsDiffTextVisible));
+                Broadcast(!_isDiffTextVisible, _isDiffTextVisible, nameof(IsDiffTextVisible));
             }
         }
 
