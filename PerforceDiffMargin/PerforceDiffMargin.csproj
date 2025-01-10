@@ -13,7 +13,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>PerforceDiffMargin</RootNamespace>
     <AssemblyName>PerforceDiffMargin</AssemblyName>
-    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <UseCodebase>true</UseCodebase>
     <GeneratePkgDefFile>true</GeneratePkgDefFile>
@@ -56,16 +56,18 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="CommunityToolkit.Mvvm">
+      <Version>8.4.0</Version>
+    </PackageReference>
     <PackageReference Include="Tvl.VisualStudio.Text.Utility.10" version="1.0.0" />
-    <PackageReference Include="MvvmLightLibs" Version="5.4.1.1" />
     <!-- This is a development-only dependency. -->
-    <PackageReference Include="Microsoft.VSSDK.BuildTools" Version="15.5.72" PrivateAssets="all" />
-    <PackageReference Include="Microsoft.VisualStudio.Imaging" Version="15.0.26201" PrivateAssets="all" />
+    <PackageReference Include="Microsoft.VSSDK.BuildTools" Version="17.12.2069" PrivateAssets="all" />
+    <PackageReference Include="Microsoft.VisualStudio.Imaging" Version="17.12.40391" PrivateAssets="all" />
     <!--
       These are not development-only dependencies, but PrivateAssets is still used to avoid transitive dependencies when
       PerforceDiffMargin.Commands references this project using a ProjectReference.
     -->
-    <PackageReference Include="p4api.net" Version="2020.1.193.5313" PrivateAssets="all" />
+    <PackageReference Include="p4api.net" Version="2024.1.265.5426" PrivateAssets="all" />
     <PackageReference Include="VSSDK.Editor.11" Version="11.0.4" PrivateAssets="all" />
     <PackageReference Include="VSSDK.Shell.11" Version="11.0.4" PrivateAssets="all" />
   </ItemGroup>
