@@ -120,21 +120,18 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\PerforceDiffMargin-Preview.png">
+    <Content Include="Resources\PerforceDiffMargin-Preview.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Resources\PerforceDiffMargin-Thumb.png">
+    </Content>
+    <Content Include="Resources\PerforceDiffMargin-Thumb.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
+    </Content>
     <Content Include="..\LICENSE.md">
       <Link>LICENSE.md</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Git-Logo-2Color.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
     <Content Include="Resources\Perforce-Logo.ico">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
