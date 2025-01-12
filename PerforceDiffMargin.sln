@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.26228.4
+# Visual Studio Version 17
+VisualStudioVersion = 17.12.35527.113 d17.12
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PerforceDiffMargin.Extension", "PerforceDiffMargin.Extension\PerforceDiffMargin.Extension.csproj", "{E4701F35-8030-418E-8E8C-6AE72E229138}"
 EndProject
@@ -21,6 +21,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PerforceDiffMargin.Commands", "PerforceDiffMargin.Commands\PerforceDiffMargin.Commands.csproj", "{AFEE8D6F-0358-4628-8CAC-D10668C95057}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PerforceDiffMargin.LegacyCommands", "PerforceDiffMargin.LegacyCommands\PerforceDiffMargin.LegacyCommands.csproj", "{359BA5C3-6964-4FA4-941F-FB97E250C521}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "PerforceDiffMargin.Shared", "PerforceDiffMargin.Shared\PerforceDiffMargin.Shared.shproj", "{574C5A5D-53A1-4368-B5F6-B5AE65B672DB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -54,5 +56,9 @@ Global
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {974DECDE-47FF-443B-94CC-0587A3E32290}
+	EndGlobalSection
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		PerforceDiffMargin.Shared\PerforceDiffMargin.Shared.projitems*{233b6f13-7687-4823-870b-a8f44b79d4f0}*SharedItemsImports = 4
+		PerforceDiffMargin.Shared\PerforceDiffMargin.Shared.projitems*{574c5a5d-53a1-4368-b5f6-b5ae65b672db}*SharedItemsImports = 13
 	EndGlobalSection
 EndGlobal
