@@ -19,10 +19,11 @@
         <Prerequisite Id="Microsoft.VisualStudio.Component.CoreEditor" Version="[15.0,18.0)" DisplayName="Visual Studio core editor" />
     </Prerequisites>
     <Assets>
-        <Asset Type="Microsoft.VisualStudio.MefComponent" d:Source="Project" d:ProjectName="PerforceDiffMargin" Path="|PerforceDiffMargin|" />
-        <Asset Type="Microsoft.VisualStudio.MefComponent" d:Source="Project" d:ProjectName="PerforceDiffMargin.Commands" TargetVersion="[15.0.27428,18.0)" Path="|PerforceDiffMargin.Commands|" />
-        <Asset Type="Microsoft.VisualStudio.VsPackage" d:Source="Project" d:ProjectName="PerforceDiffMargin" Path="|PerforceDiffMargin;PkgdefProjectOutputGroup|" />
-        <Asset Type="Microsoft.VisualStudio.VsPackage" d:Source="Project" d:ProjectName="%CurrentProject%" Path="|%CurrentProject%;PkgdefProjectOutputGroup|" />
+        <Asset Type="Microsoft.VisualStudio.MefComponent" d:Source="Project" d:ProjectName="PerforceDiffMargin.15" TargetVersion="[15.0,15.0.27131)" Path="|PerforceDiffMargin.15|" />
+        <Asset Type="Microsoft.VisualStudio.MefComponent" d:Source="Project" d:ProjectName="PerforceDiffMargin.16" TargetVersion="[15.0.27428,17.0)" Path="|PerforceDiffMargin.16|" />
+        <Asset Type="Microsoft.VisualStudio.MefComponent" d:Source="Project" d:ProjectName="PerforceDiffMargin.Commands" Path="|PerforceDiffMargin.Commands|" />
+        <Asset Type="Microsoft.VisualStudio.VsPackage" d:Source="Project" d:ProjectName="PerforceDiffMargin.15" TargetVersion="[15.0,15.0.27131)" Path="|PerforceDiffMargin.15;PkgdefProjectOutputGroup|" />
+        <Asset Type="Microsoft.VisualStudio.VsPackage" d:Source="Project" d:ProjectName="PerforceDiffMargin.16" TargetVersion="[15.0.27428,17.0)" Path="|PerforceDiffMargin.16;PkgdefProjectOutputGroup|" />
         <Asset Type="Microsoft.VisualStudio.MefComponent" d:Source="Project" d:ProjectName="PerforceDiffMargin.LegacyCommands" TargetVersion="[15.0,15.0.27131)" Path="|PerforceDiffMargin.LegacyCommands|" />
     </Assets>
 </PackageManifest>

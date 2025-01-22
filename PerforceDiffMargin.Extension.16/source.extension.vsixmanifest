@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
+    <Metadata>
+        <Identity Id="PerforceDiffMargin..5ef9f816-d9ce-45cd-a8fa-cd67a807df0e" Version="1.0.0.0" Language="en-US" Publisher="Andrii Radchenko" />
+        <DisplayName>Perforce Diff Margin</DisplayName>
+        <Description xml:space="preserve">Perforce Diff Margin displays live Perforce changes of the currently edited file on Visual Studio margin and scroll bar. Supports Visual Studio 2012 through Visual Studio 2019.</Description>
+        <MoreInfo>https://github.com/w-koder/PerforceDiffMargin</MoreInfo>
+        <License>License.md</License>
+        <Icon>Resources/PerforceDiffMargin-Thumb.png</Icon>
+        <PreviewImage>Resources/PerforceDiffMargin-Preview.png</PreviewImage>
+        <Tags>perforce, p4, gutter, diff, PerforceDiffMargin</Tags>
+    </Metadata>
+    <Installation>
+        <InstallationTarget Version="[15.0.27428,17.0)" Id="Microsoft.VisualStudio.Community" />
+        <InstallationTarget Version="[15.0.27428,17.0)" Id="Microsoft.VisualStudio.Pro" />
+    </Installation>
+    <Prerequisites>
+        <Prerequisite Id="Microsoft.VisualStudio.Component.CoreEditor" Version="[15.0.27428,17.0)" DisplayName="Visual Studio core editor" />
+    </Prerequisites>
+    <Assets>
+        <Asset Type="Microsoft.VisualStudio.MefComponent" d:Source="Project" d:ProjectName="PerforceDiffMargin.16" Path="|PerforceDiffMargin.16|" />
+        <Asset Type="Microsoft.VisualStudio.VsPackage" d:Source="Project" d:ProjectName="PerforceDiffMargin.16" Path="|PerforceDiffMargin.16;PkgdefProjectOutputGroup|" />
+        <Asset Type="Microsoft.VisualStudio.VsPackage" d:Source="Project" d:ProjectName="%CurrentProject%" Path="|%CurrentProject%;PkgdefProjectOutputGroup|" />
+    </Assets>
+</PackageManifest>

@@ -29,7 +29,9 @@ namespace PerforceDiffMargin
             OleMenuCommandService mcs = GetService(typeof(IMenuCommandService)) as OleMenuCommandService;
             if (null != mcs)
             {
-                CommandID refreshCommandID = new CommandID(new Guid(PerforceDiffMarginCommandHandler.PerforceDiffMarginStaticToolbarCommandSet), (int)PerforceDiffMarginStaticToolbarCommand.Refresh);
+                CommandID refreshCommandID = new CommandID(
+                    new Guid(PerforceDiffMarginCommandHandler.PerforceDiffMarginStaticToolbarCommandSet),
+                    (int)PerforceDiffMarginStaticToolbarCommand.Refresh);
                 OleMenuCommand refreshCommand = new OleMenuCommand(new EventHandler(OnRefresh), refreshCommandID);
                 mcs.AddCommand(refreshCommand);
 

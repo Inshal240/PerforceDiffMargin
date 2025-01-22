@@ -1,14 +1,18 @@
-﻿namespace PerforceDiffMargin.Commands
+﻿#if !LEGACY_COMMANDS
+
+namespace PerforceDiffMargin.Commands
 {
     using Microsoft.VisualStudio.Text;
     using Microsoft.VisualStudio.Text.Editor;
     using Microsoft.VisualStudio.Text.Editor.Commanding;
 
-    internal class ShowDiffCommandArgs : EditorCommandArgs
+    internal class NextChangeCommandArgs : EditorCommandArgs
     {
-        public ShowDiffCommandArgs(ITextView textView, ITextBuffer subjectBuffer)
+        public NextChangeCommandArgs(ITextView textView, ITextBuffer subjectBuffer)
             : base(textView, subjectBuffer)
         {
         }
     }
 }
+
+#endif

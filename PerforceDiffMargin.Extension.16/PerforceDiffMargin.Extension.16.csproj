@@ -2,16 +2,21 @@
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
+    <MinimumVisualStudioVersion>15.0</MinimumVisualStudioVersion>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{AFEE8D6F-0358-4628-8CAC-D10668C95057}</ProjectGuid>
+    <ProjectTypeGuids>{82b43b9b-a64c-4715-b499-d71e9ca2bd60};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <ProjectGuid>{77F03C6C-C371-47DB-8390-048AD7944086}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>PerforceDiffMargin.Commands</RootNamespace>
-    <AssemblyName>PerforceDiffMargin.Commands</AssemblyName>
+    <RootNamespace>PerforceDiffMargin.Extension</RootNamespace>
+    <AssemblyName>PerforceDiffMargin.Extension</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <GeneratePkgDefFile>true</GeneratePkgDefFile>
+    <IncludeAssemblyInVSIXContainer>false</IncludeAssemblyInVSIXContainer>
+    <IncludeDebugSymbolsInLocalVSIXDeployment>false</IncludeDebugSymbolsInLocalVSIXDeployment>
+    <TargetVsixContainerName>PerforceDiffMargin.16.vsix</TargetVsixContainerName>
     <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -32,8 +37,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <SignAssembly>true</SignAssembly>
-    <AssemblyOriginatorKeyFile>..\PerforceDiffMargin\SharedKey.snk</AssemblyOriginatorKeyFile>
+    <!-- Common debugging support -->
+    <StartAction>Program</StartAction>
+    <StartProgram>$(DevEnvDir)\devenv.exe</StartProgram>
+    <StartArguments>/rootSuffix Exp</StartArguments>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(BuildingInsideVisualStudio)' != 'true'">
+    <!-- This property disables extension deployment for command line builds; required for AppVeyor -->
+    <DeployExtension>False</DeployExtension>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -44,36 +55,23 @@
     <PackageReference Include="Microsoft.VisualStudio.Threading" Version="17.12.19" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     <PackageReference Include="StreamJsonRpc" Version="2.20.20" />
+    <PackageReference Include="Microsoft.VSSDK.BuildTools" Version="17.12.2069" PrivateAssets="all" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CommandHandlerTextViewCreationListener.cs" />
-    <Compile Include="CopyOldTextCommandArgs.cs" />
-    <Compile Include="CopyOldTextCommandHandler.cs" />
-    <Compile Include="NextChangeCommandArgs.cs" />
-    <Compile Include="NextChangeCommandHandler.cs" />
-    <Compile Include="PerforceDiffMarginCommandBinding.cs" />
-    <Compile Include="PerforceDiffMarginCommandHandler`1.cs" />
-    <Compile Include="PreviousChangeCommandArgs.cs" />
-    <Compile Include="PreviousChangeCommandHandler.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RollbackChangeCommandArgs.cs" />
-    <Compile Include="RollbackChangeCommandHandler.cs" />
-    <Compile Include="ShimCommandHandler.cs" />
-    <Compile Include="ShowDiffCommandArgs.cs" />
-    <Compile Include="ShowDiffCommandHandler.cs" />
-    <Compile Include="ShowPopupCommandArgs.cs" />
-    <Compile Include="ShowPopupCommandHandler.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\PerforceDiffMargin\PerforceDiffMargin.csproj">
-      <Project>{233b6f13-7687-4823-870b-a8f44b79d4f0}</Project>
-      <Name>PerforceDiffMargin</Name>
+    <ProjectReference Include="..\PerforceDiffMargin\PerforceDiffMargin.16.csproj">
+      <Project>{5ebd33a8-2990-40e5-a28c-479de54d6083}</Project>
+      <Name>PerforceDiffMargin.16</Name>
+      <IncludeOutputGroupsInVSIX>BuiltProjectOutputGroup;BuiltProjectOutputGroupDependencies;GetCopyToOutputDirectoryItems;SatelliteDllsProjectOutputGroup;PkgDefProjectOutputGroup</IncludeOutputGroupsInVSIX>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\PerforceDiffMargin\SharedKey.snk">
-      <Link>SharedKey.snk</Link>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="source.extension.vsixmanifest">
+      <SubType>Designer</SubType>
     </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\VSSDK\Microsoft.VsSDK.targets" Condition="Exists('$(VSToolsPath)\VSSDK\Microsoft.VsSDK.targets')" />
 </Project>

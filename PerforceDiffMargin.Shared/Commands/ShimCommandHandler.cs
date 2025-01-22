@@ -1,4 +1,6 @@
-﻿namespace PerforceDiffMargin.Commands
+﻿#if !LEGACY_COMMANDS
+
+namespace PerforceDiffMargin.Commands
 {
     using System;
     using Microsoft.VisualStudio;
@@ -50,3 +52,5 @@
         protected abstract IOleCommandTarget GetCommandTarget(T args);
     }
 }
+
+#endif

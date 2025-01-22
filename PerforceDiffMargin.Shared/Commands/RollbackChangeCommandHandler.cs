@@ -1,4 +1,6 @@
-﻿namespace PerforceDiffMargin.Commands
+﻿#if !LEGACY_COMMANDS
+
+namespace PerforceDiffMargin.Commands
 {
     using System.ComponentModel.Composition;
     using Microsoft.VisualStudio.Commanding;
@@ -17,3 +19,5 @@
         public override string DisplayName => "Rollback Change";
     }
 }
+
+#endif

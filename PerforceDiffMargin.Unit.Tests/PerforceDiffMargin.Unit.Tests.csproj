@@ -45,9 +45,9 @@
     <PackageReference Include="Shouldly" Version="4.2.1" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\PerforceDiffMargin\PerforceDiffMargin.csproj">
+    <ProjectReference Include="..\PerforceDiffMargin\PerforceDiffMargin.15.csproj">
       <Project>{233B6F13-7687-4823-870B-A8F44B79D4F0}</Project>
-      <Name>PerforceDiffMargin</Name>
+      <Name>PerforceDiffMargin.15</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

@@ -1,4 +1,6 @@
-﻿namespace PerforceDiffMargin.Commands
+﻿#if !LEGACY_COMMANDS
+
+namespace PerforceDiffMargin.Commands
 {
     using System;
     using Microsoft.VisualStudio.OLE.Interop;
@@ -16,3 +18,5 @@
             => args.TextView.Properties.GetProperty<PerforceDiffMarginCommandHandler>(typeof(PerforceDiffMarginCommandHandler));
     }
 }
+
+#endif
